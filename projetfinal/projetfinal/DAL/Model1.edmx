@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProjetFinalECommerceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Articles">
+          <Key>
+            <PropertyRef Name="idArticle" />
+          </Key>
+          <Property Name="idArticle" Type="int" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="categorie" Type="nvarchar" MaxLength="50" />
+          <Property Name="prix" Type="float" />
+          <Property Name="image" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Commande">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idClient" Type="int" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="prixTotal" Type="float" />
+          <Property Name="infos" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ligneCommande">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="quantite" Type="int" />
+          <Property Name="prix" Type="float" />
+          <Property Name="idCommande" Type="int" />
+          <Property Name="idArticle" Type="int" />
+        </EntityType>
+        <EntityType Name="Utilisateurs">
+          <Key>
+            <PropertyRef Name="login" />
+          </Key>
+          <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="prenom" Type="nvarchar" MaxLength="50" />
+          <Property Name="adresse" Type="nvarchar" MaxLength="50" />
+          <Property Name="date_naissance" Type="datetime" />
+          <Property Name="isAdmin" Type="bit" />
+          <Property Name="e_mail" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__ligneComm__idArt__300424B4">
+          <End Role="Articles" Type="Self.Articles" Multiplicity="0..1" />
+          <End Role="ligneCommande" Type="Self.ligneCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="idArticle" />
+            </Principal>
+            <Dependent Role="ligneCommande">
+              <PropertyRef Name="idArticle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ligneComm__idCom__2F10007B">
+          <End Role="Commande" Type="Self.Commande" Multiplicity="0..1" />
+          <End Role="ligneCommande" Type="Self.ligneCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Commande">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ligneCommande">
+              <PropertyRef Name="idCommande" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjetFinalECommerceModelStoreContainer">
+          <EntitySet Name="Articles" EntityType="Self.Articles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Commande" EntityType="Self.Commande" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ligneCommande" EntityType="Self.ligneCommande" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilisateurs" EntityType="Self.Utilisateurs" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ligneComm__idArt__300424B4" Association="Self.FK__ligneComm__idArt__300424B4">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="ligneCommande" EntitySet="ligneCommande" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ligneComm__idCom__2F10007B" Association="Self.FK__ligneComm__idCom__2F10007B">
+            <End Role="Commande" EntitySet="Commande" />
+            <End Role="ligneCommande" EntitySet="ligneCommande" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjetFinalECommerceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="idArticle" />
+          </Key>
+          <Property Name="idArticle" Type="Int32" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="categorie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="prix" Type="Double" />
+          <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ligneCommandes" Relationship="Self.FK__ligneComm__idArt__300424B4" FromRole="Articles" ToRole="ligneCommande" />
+        </EntityType>
+        <EntityType Name="Commande">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idClient" Type="Int32" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="prixTotal" Type="Double" />
+          <Property Name="infos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ligneCommandes" Relationship="Self.FK__ligneComm__idCom__2F10007B" FromRole="Commande" ToRole="ligneCommande" />
+        </EntityType>
+        <EntityType Name="ligneCommande">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="quantite" Type="Int32" />
+          <Property Name="prix" Type="Double" />
+          <Property Name="idCommande" Type="Int32" />
+          <Property Name="idArticle" Type="Int32" />
+          <NavigationProperty Name="Article" Relationship="Self.FK__ligneComm__idArt__300424B4" FromRole="ligneCommande" ToRole="Articles" />
+          <NavigationProperty Name="Commande" Relationship="Self.FK__ligneComm__idCom__2F10007B" FromRole="ligneCommande" ToRole="Commande" />
+        </EntityType>
+        <EntityType Name="Utilisateur">
+          <Key>
+            <PropertyRef Name="login" />
+          </Key>
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adresse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="date_naissance" Type="DateTime" Precision="3" />
+          <Property Name="isAdmin" Type="Boolean" />
+          <Property Name="e_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__ligneComm__idArt__300424B4">
+          <End Role="Articles" Type="Self.Article" Multiplicity="0..1" />
+          <End Role="ligneCommande" Type="Self.ligneCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="idArticle" />
+            </Principal>
+            <Dependent Role="ligneCommande">
+              <PropertyRef Name="idArticle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ligneComm__idCom__2F10007B">
+          <End Role="Commande" Type="Self.Commande" Multiplicity="0..1" />
+          <End Role="ligneCommande" Type="Self.ligneCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Commande">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ligneCommande">
+              <PropertyRef Name="idCommande" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjetFinalECommerceEntities5" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Articles" EntityType="Self.Article" />
+          <EntitySet Name="Commandes" EntityType="Self.Commande" />
+          <EntitySet Name="ligneCommandes" EntityType="Self.ligneCommande" />
+          <EntitySet Name="Utilisateurs" EntityType="Self.Utilisateur" />
+          <AssociationSet Name="FK__ligneComm__idArt__300424B4" Association="Self.FK__ligneComm__idArt__300424B4">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="ligneCommande" EntitySet="ligneCommandes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ligneComm__idCom__2F10007B" Association="Self.FK__ligneComm__idCom__2F10007B">
+            <End Role="Commande" EntitySet="Commandes" />
+            <End Role="ligneCommande" EntitySet="ligneCommandes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjetFinalECommerceModelStoreContainer" CdmEntityContainer="ProjetFinalECommerceEntities5">
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="ProjetFinalECommerceModel.Article">
+              <MappingFragment StoreEntitySet="Articles">
+                <ScalarProperty Name="idArticle" ColumnName="idArticle" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="categorie" ColumnName="categorie" />
+                <ScalarProperty Name="prix" ColumnName="prix" />
+                <ScalarProperty Name="image" ColumnName="image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Commandes">
+            <EntityTypeMapping TypeName="ProjetFinalECommerceModel.Commande">
+              <MappingFragment StoreEntitySet="Commande">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idClient" ColumnName="idClient" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="prixTotal" ColumnName="prixTotal" />
+                <ScalarProperty Name="infos" ColumnName="infos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ligneCommandes">
+            <EntityTypeMapping TypeName="ProjetFinalECommerceModel.ligneCommande">
+              <MappingFragment StoreEntitySet="ligneCommande">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="quantite" ColumnName="quantite" />
+                <ScalarProperty Name="prix" ColumnName="prix" />
+                <ScalarProperty Name="idCommande" ColumnName="idCommande" />
+                <ScalarProperty Name="idArticle" ColumnName="idArticle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilisateurs">
+            <EntityTypeMapping TypeName="ProjetFinalECommerceModel.Utilisateur">
+              <MappingFragment StoreEntitySet="Utilisateurs">
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="date_naissance" ColumnName="date_naissance" />
+                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+                <ScalarProperty Name="e_mail" ColumnName="e_mail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

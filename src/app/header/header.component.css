@@ -1,0 +1,14 @@
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px; /* ou la largeur souhaitée du slider */
+    height: 100%;
+    width: 300px; /* ou la largeur souhaitée du slider */
+    background-color: #fff;
+    transition: right 0.3s ease; /* animation de transition pour créer l'effet de slider */
+    z-index: 1000;
+  }
+  
+  .cart-sidebar.open {
+    right: 0;
+  }

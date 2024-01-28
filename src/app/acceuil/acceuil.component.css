@@ -1,0 +1,19 @@
+.trusted-section-inner{
+    margin-top: 18px;
+}
+ .trusted-badge {
+    background-color: black;
+} 
+.text_16{
+    color:blanchedalmond;
+}
+.carousel  {
+    height: 500px; /* Remplacez 400px par la hauteur souhaitée */
+}
+
+._fill-image_1vzbp_1 img {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
