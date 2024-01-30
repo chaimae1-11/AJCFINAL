@@ -7,5 +7,5 @@ export class Commande {
     prixTotal: number;
    infos:string;
    ligneCommandes:LigneCommande[];
- 
+
 }

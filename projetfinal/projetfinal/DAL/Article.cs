@@ -27,10 +27,8 @@ namespace projetfinal.DAL
         public string categorie { get; set; }
         public Nullable<double> prix { get; set; }
         public string image { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ligneCommande> ligneCommandes { get; set; }
+   
     [JsonIgnore]
-    public virtual ICollection<ligneCommande> LigneCommandes { get; set; }
+    public virtual ICollection<ligneCommande> ligneCommandes { get; set; }
   }
 }

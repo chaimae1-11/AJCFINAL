@@ -10,7 +10,7 @@
           <li><a href="#" class="nav-link px-2 link-secondary">Acceuil</a></li>
           <li><a href="#" class="nav-link px-2 link-dark">Hommes</a></li>
           <li><a href="#" class="nav-link px-2 link-dark">Femmes</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark"></a></li>
+          <li><a href="#" class="nav-link px-2 link-dark"> Historique</a></li>
         </ul>
 
      
@@ -59,8 +59,9 @@
         
           <div class="product-info" >
             <div class="product-title" *ngFor="let article of cartItems" >{{article.nom}}
+                <input type="number" min="1"   [(ngModel)]="article.quantite">
                 <p class="product-price product-remove-area d-flex flex-column align-items-end" > {{article.prix}}</p>
-                <a href="#" class="product-remove">Remove</a>
+                <button type="button"  (click)="removeItem(article)">Remove</button>
             </div>
         
            
@@ -70,7 +71,7 @@
                 <button type="button" class="btn btn-dark" (click)="creerCommande()" >Commander</button>
    
      
-                <!-- <button type="button" class="btn btn-dark" (click)="closeCart()" >Fermer le panier</button> -->
+               
               </div>
             </div>
           </div>

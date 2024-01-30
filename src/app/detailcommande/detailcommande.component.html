@@ -1,0 +1,91 @@
+<!-- 
+<p>detailcommande</p>
+<div *ngIf="orderLines.length > 0">
+     <h2>Détails de la commande {{ commande.id }}</h2> -->
+    <!-- <h3>Lignes de commande</h3>
+    <ul>
+      <li *ngFor="let line of orderLines">
+   
+        {{ line.idArticle }} - {{ line.nomArticle }}- Quantité: {{ line.quantite }} - Prix unitaire: {{ line.prix }}
+      </li>
+    </ul>
+  </div> 
+  -->
+ 
+ 
+ 
+ 
+  <div class="cart-page mt-100">
+    <div class="container">
+        <div class="cart-page-wrapper">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 col-12">
+                    <table class="cart-table w-100" >
+                        <thead>
+                          <tr >
+                            <th class="cart-caption heading_18">Articles</th>
+                            <th class="cart-caption heading_18"></th>
+                            <th class="cart-caption text-center heading_18 d-none d-md-table-cell">Quantite</th>
+                            <th class="cart-caption text-end heading_18">Prix</th>
+                          </tr>
+                        </thead>
+            <hr>
+                        <tbody>
+                            <tr class="cart-item"  *ngFor="let line of orderLines">
+                              <td class="cart-item-media">
+                                                                   
+                              </td>
+                              <td class="cart-item-details">
+                                <h2 class="product-title">- {{ line.idArticle }}    - {{ line.nom }}</h2>
+                                                                
+                              </td>
+                              <td class="cart-item-quantity">
+                                <div class="quantity d-flex align-items-center justify-content-between">
+                                    {{ line.quantite }} 
+                                </div>
+                                                        
+                              </td>
+                              <td class="cart-item-price text-end">
+                                <div class="product-price">  {{ line.prix }}  </div>                           
+                              </td>                        
+                            </tr>
+                           
+                           
+                        </tbody>
+                      </table>
+                </div>
+                <div class="col-lg-5 col-md-12 col-12">
+                    <div class="cart-total-area"  *ngIf="orderLines.length > 0">
+                        <h3 class="cart-total-title d-none d-lg-block mb-0">Votre Commande - {{ commandeId }}</h3>
+                        <div class="cart-total-box mt-4">
+                            <div class="subtotal-item subtotal-box">
+                                <h4 class="subtotal-title">Subtotals:</h4>
+                                <p class="subtotal-value"></p>
+                            </div>
+                            <div class="subtotal-item shipping-box">
+                                <h4 class="subtotal-title">Livraison:</h4>
+                                <p class="subtotal-value">10.00  €</p>
+                            </div>
+                            <div class="subtotal-item discount-box">
+                                <h4 class="subtotal-title">Remise:</h4>
+                                <p class="subtotal-value">100.00  €</p>
+                            </div>
+                            <hr>
+                            <div class="subtotal-item discount-box">
+                                <h4 class="subtotal-title">Total:</h4>
+                                <p class="subtotal-value">  €</p>
+                            </div>
+                            <p class="shipping_text">Les frais d'expédition et les taxes sont calculés au moment du paiement</p>
+                            <div class="d-flex justify-content-center mt-4">
+                               
+                                    <button type="button" class="btn btn-dark">Paiment</button>
+                            
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

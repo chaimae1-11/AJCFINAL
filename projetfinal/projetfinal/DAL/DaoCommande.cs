@@ -14,11 +14,10 @@ namespace projetfinal.DAL
       return contexte.Commandes.ToList<Commande>();
 
     }
-    public Commande FindById(int id)
+    public List<Commande> FindById(int idClient)
     {
       ProjetFinalECommerceEntities5 contexte = new ProjetFinalECommerceEntities5();
-
-      return contexte.Commandes.Find(id);
+      return contexte.Commandes.Where(c => c.idClient == idClient).ToList();
     }
 
 

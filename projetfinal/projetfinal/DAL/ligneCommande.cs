@@ -9,8 +9,8 @@
 
 namespace projetfinal.DAL
 {
-    using System;
-    using System.Collections.Generic;
+  using Newtonsoft.Json;
+  using System;
     
     public partial class ligneCommande
     {
@@ -20,7 +20,8 @@ namespace projetfinal.DAL
         public Nullable<int> idCommande { get; set; }
         public Nullable<int> idArticle { get; set; }
     
-        public virtual Article Article { get; set; }
+    public virtual Article Article { get; set; }
+    [JsonIgnore]
         public virtual Commande Commande { get; set; }
     }
 }

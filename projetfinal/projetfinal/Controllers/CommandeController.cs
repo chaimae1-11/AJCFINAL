@@ -18,17 +18,17 @@ namespace projetfinal.Controllers
       return new DaoCommande().FindALL();
     }
 
-    // GET: api/Commande/5
-    public Commande Get(int id)
+
+    public List<Commande> Get(int id)
     {
       return new DaoCommande().FindById(id);
     }
-   
+
 
     // POST: api/Commande
-    public void Post([FromBody]Commande c)
+    public Commande Post([FromBody]Commande c)
     {
-      new DaoCommande().Create(c);
+      return new DaoCommande().Create(c);
     }
 
     // PUT: api/Commande

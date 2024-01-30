@@ -12,6 +12,9 @@ import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { AcceuilComponent } from './acceuil/acceuil.component';
+import { DetailcommandeComponent } from './detailcommande/detailcommande.component';
+
+import { HistoriqueCommandeComponent } from './historique-commande/historique-commande.component';
 
 
 
@@ -24,6 +27,9 @@ import { AcceuilComponent } from './acceuil/acceuil.component';
     HommesComponent,
     FemmesComponent,
     AcceuilComponent,
+    DetailcommandeComponent,
+ 
+    HistoriqueCommandeComponent,
  
   
     

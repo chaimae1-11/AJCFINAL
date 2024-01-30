@@ -1,0 +1,42 @@
+<div class="container-fluid my-5  d-flex  justify-content-center" >
+    <div class="card card-1" >
+        <div class="card-header bg-white">
+            <div class="media flex-sm-row flex-column-reverse justify-content-between  ">
+                <div class="col my-auto"> <h4 class="mb-0">Vos Commandes <span class="change-color"></span> </h4> </div>
+                <div class="col-auto text-center  my-auto pl-0 pt-sm-4"> <p class="mb-4 pt-0 Glasses"> <i class="bi bi-shop-window "></i><p>AJCSPORT</p>  </div>
+            </div>
+        </div>
+        <div class="card-body"  *ngFor="let c of commandes">
+            <div class="row justify-content-between mb-3">
+                
+                <div class="col-auto"  > <small>Commande : {{c.id}}</small> </div>
+            </div>
+            <div class="row"  >
+                <div class="col">
+                    <div class="card card-2">
+                        <div class="card-body" *ngFor="let line of c.ligneCommandes">
+                            <div class="media">
+                                <div class="sq align-self-center "> <img class="img-fluid  my-auto align-self-center mr-2 mr-md-4 pl-0 p-0 m-0" [src]="'/assets/'+line.Article?.categorie+'/'+line.Article?.image" width="135" height="135" /> </div>
+                                <div class="media-body my-auto text-right">
+                                    <div class="row  my-auto flex-column flex-md-row">
+                                        <div class="col my-auto"> <h6 class="mb-0"> {{line.Article?.nom}}</h6>  </div>
+                                      
+                                       
+                                        <div class="col my-auto"> <small>{{line.quantite}}</small></div>
+                                        <div class="col my-auto"><h6 class="mb-0">{{line.Article?.prix}}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                           
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+           
+        </div>
+       
+    </div>

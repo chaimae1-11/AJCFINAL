@@ -31,26 +31,21 @@ export class HeaderComponent  {
     this.panierService.getCartItems().subscribe((items) => {
       this.cartItems = items;
     });
+   
     // Other methods to manipulate the cart (add, remove articles, etc.)
   }
 
-  creerCommande() {
-    // Create the LigneCommandes from the cartItems
-    const lignesCommande: LigneCommande[] = this.cartItems.map((article) => {
-      return {
-        id: 0,  // You may need to adjust this based on your backend logic for generating IDs
-        quantite: 1,  // You can adjust this based on your business logic
-        prix: article.prix,
-        idCommande: 0,  // This will be set by the server when the LigneCommande is created
-        idArticle: article.id,  // Adjust this property based on your actual structure
-      };
-    });
 
+  creerCommande() {
+
+ 
 
     // Call the service to create the command with the cart items
-    this.commandeService.creerCommande(this.commande,this.cartItems).subscribe(
+    this.commandeService.creerCommande(this.cartItems).subscribe(
       (response) => {
         // Response of the command creation
+        console.log(response)
+        localStorage.setItem('commandeId',response.id)
         console.log('Commande créée avec succès:', response);
 
         // You can perform other actions after creating the command if necessary
@@ -66,5 +61,16 @@ export class HeaderComponent  {
     // Logic to calculate the total price from the cart articles
     return articles.reduce((total, article) => total + article.prix, 0);
   }
+  removeItem(article: any): void {
+    // Logique pour supprimer l'article du panier
+    const index = this.cartItems.indexOf(article);
+    if (index !== -1) {
+      this.cartItems.splice(index, 1);
+    }
+  }
+
 }
+
+
+
 

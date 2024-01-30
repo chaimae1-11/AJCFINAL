@@ -5,4 +5,6 @@ export class Articles {
     categorie: string;
     prix: number;
     image:string;
+    quantite: number; 
+
 }

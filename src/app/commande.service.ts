@@ -9,11 +9,14 @@ import { Articles } from './articles';
   providedIn: 'root',
 })
 export class CommandeService {
+
+ 
   private apiUrl = 'http://localhost:63685/api/Commande';
+  cartItems: any;
 
   constructor(private http: HttpClient) {}
 
-  creerCommande(commande: Commande, cartItems: any[]): Observable<any> {
+  creerCommande(cartItems: any[]): Observable<any> {
     const commandeToCreate: Commande = {
       id: 0, // You may need to adjust this based on your backend logic for generating IDs
       idClient: 1, // You need to set the actual idClient here
@@ -21,7 +24,9 @@ export class CommandeService {
       prixTotal: this.calculerPrixTotal(cartItems),
       infos: 'done',
       ligneCommandes: this.addOrderLines(cartItems),
+      
     };
+ 
     // debugger;
     console.log(commandeToCreate)
     return this.http.post<any>(`${this.apiUrl}/creer`, commandeToCreate);
@@ -32,7 +37,7 @@ export class CommandeService {
 
     // Logic to calculate the total price from the cart articles
     articles.forEach((article) => {
-      prixTotal += article.prix;
+      prixTotal += article.prix * (article.quantite || 1); // Recalculat
     });
 
     return prixTotal;
@@ -44,7 +49,8 @@ export class CommandeService {
       orderLines.push({
         idArticle: ar.idArticle,
         prix: ar.prix ,
-        quantite: 1,
+        quantite: ar.quantite || 1,
+       nomArticle:ar.nom,
       });
     });
     return orderLines;
