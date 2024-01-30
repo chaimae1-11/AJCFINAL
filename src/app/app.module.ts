@@ -15,6 +15,9 @@ import { AcceuilComponent } from './acceuil/acceuil.component';
 import { DetailcommandeComponent } from './detailcommande/detailcommande.component';
 
 import { HistoriqueCommandeComponent } from './historique-commande/historique-commande.component';
+import { LoginComponent } from './login/login.component';
+import { InscriptionComponent } from './inscription/inscription.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 
 
@@ -30,6 +33,9 @@ import { HistoriqueCommandeComponent } from './historique-commande/historique-co
     DetailcommandeComponent,
  
     HistoriqueCommandeComponent,
+      LoginComponent,
+      InscriptionComponent,
+      WishlistComponent,
  
   
     

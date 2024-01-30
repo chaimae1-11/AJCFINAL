@@ -4,6 +4,7 @@ import { CommandeService } from '../commande.service';
 import { Commande } from '../commande';
 import { LigneCommande } from '../ligne-commande';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-header',
@@ -15,8 +16,9 @@ export class HeaderComponent  {
   cartItems: any[] = [];  // Adjust the type according to the actual structure of your articles in the cart
   articles: any;
   commande: Commande | null = null;
-
-  constructor(private panierService: PanierService, private commandeService: CommandeService) {}
+isAuth:boolean;
+totalPanie:number;
+  constructor(private panierService: PanierService, private commandeService: CommandeService , private authService: AuthService) {}
 
   toggleCart() {
     this.isCartOpen = !this.isCartOpen;
@@ -33,6 +35,8 @@ export class HeaderComponent  {
     });
    
     // Other methods to manipulate the cart (add, remove articles, etc.)
+    this.isAuth=this.authService.isUserAuthenticated()
+   
   }
 
 
@@ -57,9 +61,17 @@ export class HeaderComponent  {
     );
   }
 
-  private calculerPrixTotal(articles: any[]): number {
+  private calculerPrixTotal(): void {
     // Logic to calculate the total price from the cart articles
-    return articles.reduce((total, article) => total + article.prix, 0);
+    let totalPanier=0;
+    this.articles.forEach((article)=>{
+      totalPanier += article.prix;
+    })
+
+
+
+
+
   }
   removeItem(article: any): void {
     // Logique pour supprimer l'article du panier
@@ -67,6 +79,12 @@ export class HeaderComponent  {
     if (index !== -1) {
       this.cartItems.splice(index, 1);
     }
+  }
+
+  deconnexion(){
+   debugger
+    this.authService.logoutUser();
+    this.ngOnInit()
   }
 
 }

@@ -1,0 +1,30 @@
+
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col" *ngFor="let article of wishlist">
+          <!-- Ajoutez une condition *ngIf pour filtrer par catégorie -->
+          <div>
+            <div class="card shadow-sm">
+              <img class="img-fluid  my-auto align-self-center mr-2 mr-md-4 pl-0 p-0 m-0" [src]="'/assets/Hommes/'+article.image"  />
+                <title>Placeholder</title>
+            
+               
+            
+  
+              <div class="card-body">
+                <p class="card-text fw-light">{{article.nom}}</p> <hr><span>{{article.description}}</span>
+           
+                <div class="d-flex justify-content-between align-items-center">
+                  
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fin de la condition *ngIf -->
+        </div>
+      </div>
+    </div>
+  </div>

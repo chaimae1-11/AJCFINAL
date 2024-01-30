@@ -7,10 +7,10 @@
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 link-secondary">Acceuil</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">Hommes</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">Femmes</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark"> Historique</a></li>
+          <li><a  routerLink="/acceuil" class="nav-link px-2 link-secondary">Acceuil</a></li>
+          <li><a  routerLink="/Hommes" class="nav-link px-2 link-dark">Hommes</a></li>
+          <li><a  routerLink="/Femmes"class="nav-link px-2 link-dark">Femmes</a></li>
+        
         </ul>
 
      
@@ -21,29 +21,34 @@
 <form class="d-flex float-end">
     
     
-        <button class="btn btn-outline-dark me-2" >
+        <button  routerLink="/login" *ngIf="!isAuth"class="btn btn-outline-dark me-2" >
             <i class="bi bi-person-fill"></i> 
             Login
           
           </button>
-
-       <button class="btn btn-outline-dark me-2" >
-        <i class="bi bi-person"></i>
-        S'inscrire
-      
-      </button>
+          <button  *ngIf="isAuth"class="btn btn-outline-dark me-2" (click)="deconnexion()" >
+            <i class="bi bi-person-fill"  ></i> 
+            Log out
+          
+          </button>
+   
         
 
-        <button class="btn btn-outline-dark me-2" >
+        <button  routerLink="/wishlist"class="btn btn-outline-dark me-2" >
             <i class="bi bi-heart"></i>
             Wishlist
           
           </button>
+         
     <button class="btn btn-outline-dark me-2" (click)="toggleCart()" type="button">
+     
+     
+     
       <i class="bi-cart-fill me-1"></i>
       Panier
       <span class="badge bg-dark text-white ms-1 rounded-pill">{{ cartItems.length }}</span>
     </button>
+    <div *ngIf="isAuth"><a routerLink="/historiquecommande" class="nav-link px-2 link-dark"> Historique</a></div>
   </form>
   </div>
   
@@ -51,7 +56,7 @@
   <div class="cart-sidebar" [ngClass]="{'open': isCartOpen}">
     <!-- Contenu du panier ici -->
     <div class="offcanvas-header border-btm-black">
-        <h5 class="cart-drawer-heading text_16">Your Cart (04)</h5>
+        <h5 class="cart-drawer-heading text_16  ">Votre panier</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" (click)="closeCart()" ></button>
       </div>
 
@@ -61,14 +66,16 @@
             <div class="product-title" *ngFor="let article of cartItems" >{{article.nom}}
                 <input type="number" min="1"   [(ngModel)]="article.quantite">
                 <p class="product-price product-remove-area d-flex flex-column align-items-end" > {{article.prix}}</p>
-                <button type="button"  (click)="removeItem(article)">Remove</button>
+               
+                <span style="color: rgb(13, 13, 14); cursor: pointer; text-align: right;" (click)="removeItem(article)">Remove</span>
             </div>
-        
+        <hr>
+        <span style=" text-align: right;" > </span>
            
               <div class="product-remove-area d-flex flex-column align-items-end">
            
               
-                <button type="button" class="btn btn-dark" (click)="creerCommande()" >Commander</button>
+                <button type="button" class="btn btn-dark" style="    margin-top: 315px;" (click)="creerCommande()" >Commander</button>
    
      
                

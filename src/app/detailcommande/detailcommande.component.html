@@ -23,20 +23,23 @@
                     <table class="cart-table w-100" >
                         <thead>
                           <tr >
-                            <th class="cart-caption heading_18">Articles</th>
-                            <th class="cart-caption heading_18"></th>
-                            <th class="cart-caption text-center heading_18 d-none d-md-table-cell">Quantite</th>
+                            
+                            <th class="cart-caption heading_18">Articles </th>
+                  
+                            <th class="cart-caption  heading_18 d-none d-md-table-cell text-left">Quantite</th>
                             <th class="cart-caption text-end heading_18">Prix</th>
                           </tr>
+                         
                         </thead>
-            <hr>
+          
                         <tbody>
                             <tr class="cart-item"  *ngFor="let line of orderLines">
-                              <td class="cart-item-media">
-                                                                   
-                              </td>
+                            
                               <td class="cart-item-details">
-                                <h2 class="product-title">- {{ line.idArticle }}    - {{ line.nom }}</h2>
+                                <div class="mini-img-wrapper">
+                                  <img class="mini-img" src="'/assets/'+line.Article.categorie+'/'+line.Article.image" alt="img">
+                              </div>
+                                <p class="product-title">- {{ line.idArticle }}    - {{ line.nom }}</p>
                                                                 
                               </td>
                               <td class="cart-item-quantity">
@@ -53,22 +56,23 @@
                            
                         </tbody>
                       </table>
+                      <button  href="Acceuil" type="button" class="btn btn-dark" style="margin-top: 193px;">Retourner au panier</button>
                 </div>
                 <div class="col-lg-5 col-md-12 col-12">
                     <div class="cart-total-area"  *ngIf="orderLines.length > 0">
                         <h3 class="cart-total-title d-none d-lg-block mb-0">Votre Commande - {{ commandeId }}</h3>
                         <div class="cart-total-box mt-4">
                             <div class="subtotal-item subtotal-box">
-                                <h4 class="subtotal-title">Subtotals:</h4>
+                                <h4 class="subtotal-title">Subtotals:  {{ subTotal }} </h4>
                                 <p class="subtotal-value"></p>
                             </div>
                             <div class="subtotal-item shipping-box">
                                 <h4 class="subtotal-title">Livraison:</h4>
-                                <p class="subtotal-value">10.00  €</p>
+                                <p class="subtotal-value">50.00  €</p>
                             </div>
                             <div class="subtotal-item discount-box">
                                 <h4 class="subtotal-title">Remise:</h4>
-                                <p class="subtotal-value">100.00  €</p>
+                                <p class="subtotal-value">0.00  €</p>
                             </div>
                             <hr>
                             <div class="subtotal-item discount-box">

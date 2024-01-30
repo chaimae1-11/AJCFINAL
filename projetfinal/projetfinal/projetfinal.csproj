@@ -185,6 +185,8 @@
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\CommandeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\UtilisateurController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DAL\Article.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -194,6 +196,7 @@
     </Compile>
     <Compile Include="DAL\DaoArticle.cs" />
     <Compile Include="DAL\DaoCommande.cs" />
+    <Compile Include="DAL\DaoUtilisateur.cs" />
     <Compile Include="DAL\ligneCommande.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -219,6 +222,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\Authentification.cs" />
     <Compile Include="Models\Commande.cs" />
     <Compile Include="Models\Utilisateurs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -295,6 +299,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Article\" />
     <Folder Include="Views\Commande\" />
+    <Folder Include="Views\Login\" />
+    <Folder Include="Views\Utilisateur\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

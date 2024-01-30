@@ -12,6 +12,7 @@ export class HistoriqueCommandeComponent {
 
  id:number;
   commandes:Commande[];
+  userid:number
 
   constructor(private route: ActivatedRoute,private http: HttpClient) { }
     
@@ -20,21 +21,15 @@ export class HistoriqueCommandeComponent {
     
   ngOnInit(): void {
   
-  
+    const userid = JSON.parse(localStorage.getItem('user')).login
     //partie 1
-    this.route.params.subscribe(params => {
-  
-      this.id = params['id'];
-      console.log(this.id);
-  
-    });
+
       
 //partie 2
-this.http.get<Commande[]>("http://localhost:63685/api/commande/"+this.id).subscribe(
+this.http.get<Commande[]>("http://localhost:63685/api/commande/"+userid).subscribe(
   (response:Commande[]) => {
     this.commandes=response;
    
-    console.log(response);
   }
   ,
  (err) => {

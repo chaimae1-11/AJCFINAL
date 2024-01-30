@@ -1,0 +1,63 @@
+<section class="vh-100" style="background-color: #9A616D;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+                <div class="card" style="border-radius: 1rem;">
+                    <div class="row g-0">
+                        <div class="col-md-6 col-lg-5 d-none d-md-block">
+                        <img src="../../assets/img1.jpg"
+                            alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                        </div>
+                        <div class="col-md-6 col-lg-7 d-flex">
+                            <div class="card-body p-4 p-lg-5 text-black"> 
+                                <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Inscription</h5>
+                                <div class="row g-0">
+                                    <div class="col-md-6 px-2 pb-3">
+                                        <label class="form-label" >Nom</label>
+                                        <input type="text" id="nom" class="form-control form-control-lg" [(ngModel)]="user.nom" required
+                                        ng-change="change()"/>
+                                      </div>
+                                      <div class="col-md-6 px-2 pb-3">
+                                        <label class="form-label" >Prenom</label>
+                                        <input type="text" id="prenom"  class="form-control form-control-lg" [(ngModel)]="user.prenom"/>
+                                      </div>
+                                      <div class="col-md-6 px-2 pb-3">
+                                        <label class="form-label" >Adresse</label>
+                                        <input type="text" id="adresse" class="form-control form-control-lg" [(ngModel)]="user.adresse"/>
+                                      </div>
+                                      <div class="col-md-6 px-2 pb-3">
+                                        <label class="form-label" >Mail</label>
+                                        <input type="text" id="mail" class="form-control form-control-lg" [(ngModel)]="user.e_mail"/>
+                                      </div>
+                                      <div class="col-md-6 px-2 pb-3">
+                                        <label class="form-label" >Date de maissance</label>
+                                        <input type="text" id="dateNaissance" class="form-control form-control-lg" 
+                                        [(ngModel)]="user.date_naissance" placeholder="AAAA-MM-JJ"/>
+                                      </div>
+                                      <div class="col-md-6 px-2 pb-3">
+                                        <label class="form-label" >Login</label>
+                                        <input type="text" id="login" class="form-control form-control-lg" [(ngModel)]="user.login"/>
+                                      </div>
+                                      <div class="col-md-6 px-2 pb-3">
+                                        <label class="form-label" >Password</label>
+                                        <input type="text" id="Password" class="form-control form-control-lg" [(ngModel)]="user.password"/>
+                                      </div>
+                                      <div class="col-md-6 px-2 pb-3">
+                                        <label class="form-label" >Confirmation du password</label>
+                                        <input type="text" id="passwordConfim" class="form-control form-control-lg" [(ngModel)]="confimPasword"/>
+                                      </div>
+                                    <div class="pt-1 mb-4">
+                                        <div *ngIf="showError" class="alert alert-danger"> Votre mot de passe est incorrect</div>
+                                      </div> 
+                                    <div class="pt-1 mb-4">
+                                        <button class="btn btn-dark btn-lg btn-block" type="button" (click)="save()">S'inscrire</button>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

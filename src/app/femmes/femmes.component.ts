@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Articles } from '../articles';
+import { WishlistService } from '../wishlist.service';
 
 @Component({
   selector: 'app-femmes',
@@ -10,7 +12,7 @@ export class FemmesComponent {
   categorie: string;
   articles: any
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private wishlistService:WishlistService) { }
 
   ngOnInit(): void {
 
@@ -32,5 +34,9 @@ export class FemmesComponent {
       }
 
     );
+}
+addToWishlist(article: Articles): void {
+  // Implement logic to add the product to the wishlist
+  this.wishlistService.addToWishlist(article);
 }
 }

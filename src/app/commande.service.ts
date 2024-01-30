@@ -51,6 +51,9 @@ export class CommandeService {
         prix: ar.prix ,
         quantite: ar.quantite || 1,
        nomArticle:ar.nom,
+       Article : {
+        image: ar.image
+       }
       });
     });
     return orderLines;

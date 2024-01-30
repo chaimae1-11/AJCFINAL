@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Articles } from '../articles'
 import { PanierService } from '../panier.service';
+import { WishlistService } from '../wishlist.service';
 @Component({
   selector: 'app-hommes',
   templateUrl: './hommes.component.html',
@@ -13,7 +14,7 @@ export class HommesComponent  {
   articles: any
   cartItems: any[] = [];
  
-  constructor(private http: HttpClient, private panierService: PanierService) {  console.log('PanierService:', this.panierService);}
+  constructor(private http: HttpClient, private panierService: PanierService,private wishlistService:WishlistService) {  console.log('PanierService:', this.panierService);}
 
 
   ngOnInit(): void {
@@ -52,5 +53,9 @@ ajouterAuPanier(article: any) {
   );
 
   console.log('Après appel à ajouterAuPanier');
+}
+addToWishlist(article: Articles): void {
+  // Implement logic to add the product to the wishlist
+  this.wishlistService.addToWishlist(article);
 }
 }
