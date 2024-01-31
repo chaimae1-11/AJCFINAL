@@ -35,7 +35,7 @@ namespace projetfinal.Models
       get { return e_mail; }
       set { e_mail = value; }
     }
-    public string IdAdmin
+    public string IsdAdmin
     {
       get { return isAdmin; }
       set { isAdmin = value; }

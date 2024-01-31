@@ -56,19 +56,19 @@
                            
                         </tbody>
                       </table>
-                      <button  href="Acceuil" type="button" class="btn btn-dark" style="margin-top: 193px;">Retourner au panier</button>
+                      <button  href="Acceuil" type="button" class="btn btn-dark" style="margin-top: 193px;" (click)="goToPrevious()">Retourner au panier</button>
                 </div>
                 <div class="col-lg-5 col-md-12 col-12">
                     <div class="cart-total-area"  *ngIf="orderLines.length > 0">
                         <h3 class="cart-total-title d-none d-lg-block mb-0">Votre Commande - {{ commandeId }}</h3>
                         <div class="cart-total-box mt-4">
                             <div class="subtotal-item subtotal-box">
-                                <h4 class="subtotal-title">Subtotals:  {{ subTotal }} </h4>
-                                <p class="subtotal-value"></p>
+                                <h4 class="subtotal-title">Subtotals:  </h4>
+                                <p class="subtotal-value"> {{ subTotal }} €</p>
                             </div>
                             <div class="subtotal-item shipping-box">
                                 <h4 class="subtotal-title">Livraison:</h4>
-                                <p class="subtotal-value">50.00  €</p>
+                                <p class="subtotal-value">0.00  €</p>
                             </div>
                             <div class="subtotal-item discount-box">
                                 <h4 class="subtotal-title">Remise:</h4>
@@ -77,12 +77,12 @@
                             <hr>
                             <div class="subtotal-item discount-box">
                                 <h4 class="subtotal-title">Total:</h4>
-                                <p class="subtotal-value">  €</p>
+                                <p class="subtotal-value"> {{ subTotal }} €</p>
                             </div>
                             <p class="shipping_text">Les frais d'expédition et les taxes sont calculés au moment du paiement</p>
                             <div class="d-flex justify-content-center mt-4">
                                
-                                    <button type="button" class="btn btn-dark">Paiment</button>
+                                    <button type="button" class="btn btn-dark" routerLink="/historiqueCommande"  (click)="  creerCommande()">Valider la commande</button>
                             
                             </div>
                            

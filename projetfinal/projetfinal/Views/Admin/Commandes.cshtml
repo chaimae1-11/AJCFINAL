@@ -1,0 +1,24 @@
+@model List<projetfinal.DAL.Commande>
+@{
+  ViewBag.Title = "Commandes";
+}
+
+<h2 class="bg-primary">ACHAT DU CLIENT </h2>
+@foreach (var x in Model)
+{
+  <div>
+    <form method="post" action="/Admin/ArticlesDelete">
+      <table class="container-fluid table-striped">
+        <tr>
+          <td style="width:10%"><label>COMMANDE : @x.id</label></td>
+          <td style="width:10%"><label>CLIENT : @x.idClient</label></td>
+          <td style="width:10%"><label>DATE : @x.date</label></td>
+          <td style="width:10%"><label>PRIX : @x.prixTotal euros</label></td>
+          <td style="width:10%"><label>INFOS : @x.infos</label></td>
+          <td style="width:10%"><button type="submit" class="btn-danger" style="margin-left:5px">SUPPRIMER</button></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+}
+

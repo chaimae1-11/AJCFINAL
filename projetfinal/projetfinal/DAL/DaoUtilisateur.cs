@@ -34,15 +34,15 @@ namespace projetfinal.DAL
       return user;
     }
 
-    //public void Delete(int id)
-    //{
-    //  ProjetFinalECommerceEntities5 context = new ProjetFinalECommerceEntities5();
-    //  ProjetFinalECommerceEntities5 user = context.Utilisateur.Find(id);
-    //  context.Utilisateur.Remove(user);
-    //  context.SaveChanges();
-    //}
+    public void Delete(int id)
+    { 
+     ProjetFinalECommerceEntities5 context = new ProjetFinalECommerceEntities5();
+    Utilisateur user = context.Utilisateur.Find(id);
+    context.Utilisateur.Remove(user);
+      context.SaveChanges();
+    }
 
-    public void Update(Utilisateur user)
+  public void Update(Utilisateur user)
     {
       ProjetFinalECommerceEntities5 context = new ProjetFinalECommerceEntities5();
       context.Entry(user).State = EntityState.Modified;

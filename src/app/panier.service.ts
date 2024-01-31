@@ -6,14 +6,23 @@ import { Commande } from './commande';
   providedIn: 'root'
 })
 export class PanierService {
-  private cartItemsSubject = new BehaviorSubject<any[]>([]);
+  private cartItems: any[] = [];
+  private cartItemsSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(this.cartItems);
   cartItems$ = this.cartItemsSubject.asObservable();
   lignesCommandes: any[];
 
   constructor() {
     // Load the cart from local storage during the service creation
     this.loadCartFromLocalStorage();
+
+    this.updateCartStorage();
   }
+
+   getCartItemsObservable(): Observable<any[]> {
+    return this.cartItemsSubject.asObservable();
+  }
+
+  
 
   ajouterAuPanier(article: any): void {
     const currentItems = this.cartItemsSubject.value;
@@ -44,8 +53,9 @@ export class PanierService {
     // }
 
     // Update the cart in local storage or via your storage mechanism
-    this.updateCartStorage();
+   
   }
+
 
   getCartItems(): Observable<any[]> {
     return this.cartItems$;
@@ -57,6 +67,10 @@ export class PanierService {
 
   }
   
+  updateCartItems(cartItems) {
+    this.cartItemsSubject.next(cartItems)
+    this.updateCartStorage()
+  }
 
 
   private updateCartStorage(): void {
@@ -74,4 +88,14 @@ export class PanierService {
   private articlesAreEqual(article1: any, article2: any): boolean {
     return article1.id === article2.id && article1.nom === article2.nom;
   }
+
+  viderPanier() {
+    // Logique pour vider le panier (par exemple, réinitialiser la liste des articles)
+    const emptyCart: any[] = [];
+    this.cartItemsSubject.next(emptyCart);
+}
+}
+
+function getCartItemsObservable() {
+  throw new Error('Function not implemented.');
 }

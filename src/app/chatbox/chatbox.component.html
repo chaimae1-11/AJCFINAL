@@ -1,0 +1,5 @@
+<div class="chatbox">
+    <app-message *ngFor="let message of chatService.messages" [message]="message"></app-message>
+    <app-messageinput (messageSent)="sendMessage($event)"></app-messageinput>
+  </div>
+  

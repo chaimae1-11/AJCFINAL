@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Commande } from '../commande';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-historique-commande',
@@ -24,7 +25,7 @@ export class HistoriqueCommandeComponent {
     const userid = JSON.parse(localStorage.getItem('user')).login
     //partie 1
 
-      
+  
 //partie 2
 this.http.get<Commande[]>("http://localhost:63685/api/commande/"+userid).subscribe(
   (response:Commande[]) => {
@@ -45,5 +46,3 @@ this.http.get<Commande[]>("http://localhost:63685/api/commande/"+userid).subscri
 );
 }
 }
-
-

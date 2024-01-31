@@ -45,6 +45,7 @@ export class InscriptionComponent {
       })
     }).subscribe(response => {
       this.message="personne créée"
+      alert("Inscription reussie");
       window.location.href = "/login";
     },
     err => {    

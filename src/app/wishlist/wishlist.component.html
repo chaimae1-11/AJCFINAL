@@ -1,13 +1,14 @@
 
-
-  <div class="album py-5 bg-light">
+<div>
+  <div class="album py-5 bg-light" >
+    <h4 class="gl-heading-font-set-standard-14___2FZBl" style="text-align: center;">Votre Wishlist</h4>
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col" *ngFor="let article of wishlist">
           <!-- Ajoutez une condition *ngIf pour filtrer par catégorie -->
           <div>
             <div class="card shadow-sm">
-              <img class="img-fluid  my-auto align-self-center mr-2 mr-md-4 pl-0 p-0 m-0" [src]="'/assets/Hommes/'+article.image"  />
+              <img class="img-fluid  my-auto align-self-center mr-2 mr-md-4 pl-0 p-0 m-0" [src]="'/assets/' + article.categorie + '/'+article.image" />
                 <title>Placeholder</title>
             
                
@@ -28,3 +29,4 @@
       </div>
     </div>
   </div>
+</div>

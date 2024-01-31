@@ -1,3 +1,6 @@
+
+
+
 .cart-sidebar {
     position: fixed;
     top: 0;
@@ -12,3 +15,26 @@
   .cart-sidebar.open {
     right: 0;
   }
+  
+.minicart-footer {
+  padding: 20px;
+  -ms-border-top: 1px solid rgba(0, 0, 0, 0.1);
+  -webkit-border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  position: fixed;
+  bottom: 0;
+}
+.offcanvas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+}
+.minicart-item{
+  box-sizing: border-box;
+}
+.input {
+  width: 50px; /* Ajustez la largeur en fonction de vos besoins */
+  height: 30px; /* Ajustez la hauteur en fonction de vos besoins */
+  font-size: 12px; /* Ajustez la taille de la police en fonction de vos besoins */
+}

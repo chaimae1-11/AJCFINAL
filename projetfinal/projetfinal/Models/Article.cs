@@ -12,6 +12,7 @@ namespace projetfinal.Models
         private string description;
         private double prix;
         private string categorie;
+    private string image;
         public Article()
         {
 
@@ -57,7 +58,11 @@ namespace projetfinal.Models
             get { return prix; }
             set { prix = value; }
         }
-     
-       
+    public string Image
+    {
+      get { return image; }
+      set { image = value; }
     }
+
+  }
 }

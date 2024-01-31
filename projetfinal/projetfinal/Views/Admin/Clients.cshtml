@@ -1,0 +1,72 @@
+@model List<projetfinal.DAL.Utilisateur>
+@{
+  ViewBag.Title = "Clients";
+}
+@if (Session["erreur"] != null)
+{
+  <p class="text-danger">@ViewBag.error</p>
+}
+<h2 clas
+<h2 class="bg-primary">AJOUTER UN UTILISATEUR</h2>
+<div>
+    <form method="post" action="/Admin/ClientsAdd">
+        <label class="col-sm-3">ID: </label><input type="text" name="id" class="col-sm-3">
+        <label class="col-sm-3">PASSWORD: </label><input type="text" name="password" class="col-sm-3"><br />
+        <label class="col-sm-3">ADRESSE: </label><input type="text" name="adresse" class="col-sm-3">
+        <label class="col-sm-3">DATE DE NAISSANCE: </label><input type="date" name="naissance" class="col-sm-3"><br />
+        <label class="col-sm-1">NOM: </label><input type="text" name="nom" class="col-sm-3">
+        <label class="col-sm-1">PRENOM: </label><input type="text" name="prenom" class="col-sm-3">
+        <label class="col-sm-1">EMAIL: </label><input type="text" name="email" class="col-sm-3">
+        <br />
+        <button type="submit" class="btn-success">AJOUTER UN UILISATEUR</button>
+    </form>
+</div>
+<hr />
+<h2 class="bg-primary">LISTE DES UTILISATEURS</h2>
+@foreach (var x in Model)
+{
+    <div>
+        <form method="post" action="/Admin/ClientsDelete">
+            <table class="container-fluid table-striped">
+                <tr>
+                    <td style="width:5%"><input type="text" name="id" value="@x.login" readonly></td>
+                    <td style="width:10%">PASSWORD : @x.password</td>
+                    <td style="width:5%">NOM : @x.nom</td>
+                    <td style="width:10%">PRENOM : @x.prenom</td>
+                    <td style="width:10%">ADRESSE : @x.adresse</td>
+                    <td style="width:25%">DATE DE NAISSANCE : @x.date_naissance</td>
+                    <td style="width:10%">EMAIL : @x.e_mail</td>
+                    <td style="width:5%">ADMIN : @x.isAdmin</td>
+                    <td style="width:10%">
+                        <button type="submit" formaction="/Admin/Commandes" class="btn-info">COMMANDES</button>
+                    </td>
+                    <td style="width:10%">
+                        <button type="submit" formaction="/Admin/Clients" class="btn-warning">MODIFIER</button>
+                    </td>
+                    <td style="width:10%">
+                        <button type="submit" class="btn-danger">SUPPRIMER</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        @if (ViewBag.user == x.login)
+        {
+            <br />
+            <form method="put" action="/Admin/ClientsUpdate">
+                <label class="col-sm-3">ID: </label><input type="number" name="id" value="@x.login" readonly class="col-sm-3" />
+                <label class="col-sm-3">PASSWORD: </label><input type="text" name="password" value="@x.password" class="col-sm-3" />
+                <label class="col-sm-3">NOM: </label><input type="text" name="nom" value="@x.nom" class="col-sm-3" />
+                <label class="col-sm-3">PRENOM: </label><input type="text" name="prenom" value="@x.prenom" class="col-sm-3" />
+                <label class="col-sm-3">ADRESSE: </label><input type="text" name="adresse" value="@x.adresse" class="col-sm-3" />
+                <label class="col-sm-3">DATE DE NAISSANCE: </label><input type="date" name="naissance" value="@x.date_naissance" class="col-sm-3" />
+                <label class="col-sm-3">EMAIL: </label><input type="text" name="email" value="@x.e_mail" class="col-sm-3" />
+                <label class="col-sm-3">ADMIN: </label><input type="text" name="isAdmin" value="@x.isAdmin" class="col-sm-3" />
+                <button type="submit" class="btn-danger">SAUVEGARDER LES MODIFICATIONS</button>
+                <button type="submit" formaction="/Admin/Clients" class="btn-warning">FERMER</button>
+            </form>
+            <br />
+        }
+    </div>
+}
+
+

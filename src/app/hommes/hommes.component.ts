@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Articles } from '../articles'
 import { PanierService } from '../panier.service';
 import { WishlistService } from '../wishlist.service';
+import * as Toastify from 'toastify-js'
 @Component({
   selector: 'app-hommes',
   templateUrl: './hommes.component.html',
@@ -45,7 +46,18 @@ ajouterAuPanier(article: any) {
   this.panierService.ajouterAuPanier(article);
   this.panierService.getCartItems().subscribe(
     (items) => {
-      console.log(`Article ajouté au panier: ${article.nom}`);
+      Toastify({
+        text: "Article ajouté au panier",
+        duration: 3000,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: false, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+        },
+        onClick: function(){} // Callback after click
+      }).showToast();
     },
     (error) => {
       console.error('Erreur lors de l\'ajout au panier:', error);

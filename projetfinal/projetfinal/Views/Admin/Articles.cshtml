@@ -1,0 +1,60 @@
+@model List<projetfinal.DAL.Article>
+@{
+  ViewBag.Title = "Articles";
+}
+@if (Session["erreur"] != null)
+{
+  <p class="text-danger">@ViewBag.error</p>
+}
+<h2 class="bg-primary">AJOUTER UN ARTICLE</h2>
+<div>
+  <form method="post" action="/Admin/ArticlesAdd">
+    <label class="col-sm-3">ID: </label><input type="number" name="id" class="col-sm-3">
+    <label class="col-sm-3">NOM: </label><input type="text" name="nom" class="col-sm-3"><br />
+    <label class="col-sm-3">DESCRIPTION: </label><input type="text" name="description" class="col-sm-3">
+    <label class="col-sm-3">CATEGORIE: </label><input type="text" name="categorie" class="col-sm-3"><br />
+    <label class="col-sm-3">PRIX: </label><input type="number" name="prix" class="col-sm-3">
+    <label class="col-sm-3">URL: </label><input type="text" name="image" class="col-sm-3"><br />
+    <button type="submit" class="btn-success">AJOUTER UN ARTICLE</button>
+  </form>
+</div>
+<hr />
+<h2 class="bg-primary">LISTE DES ARTICLES</h2>
+@foreach (var x in Model)
+{
+  <div>
+    <form method="post" action="/Admin/ArticlesDelete">
+      <table class="container-fluid table-striped">
+        <tr>
+          <td style="width:1%"><input type="number" name="id" value="@x.idArticle" readonly></td>
+          <td style="width:10%"><img src="../Images/@x.image" width="100" height="100"></td>
+          <td style="width:10%"><label>NOM : @x.nom</label></td>
+          <td style="width:40%"><label>DESCRIPTION : @x.description</label></td>
+          <td style="width:10%"><label>CATEGORIE : @x.categorie</label></td>
+          <td style="width:30%"><label>PRIX : @x.prix euros</label></td>
+          <td style="width:10%"><button type="submit" formaction="/Admin/Articles" class="btn-warning" style="margin-left:5px">MODIFIER</button></td>
+          <td style="width:10%"><button type="submit" class="btn-danger" style="margin-left:5px">SUPPRIMER</button></td>
+        </tr>
+      </table>
+    </form>
+    @if (ViewBag.article == x.idArticle)
+    {
+      <br />
+      <form method="put" action="/Admin/ArticlesUpdate">
+        <label class="col-sm-3">ID (readonly): </label><input type="number" name="id" value="@x.idArticle" readonly class="col-sm-3" />
+        <label class="col-sm-3">NOM: </label><input type="text" name="nom" value="@x.nom" class="col-sm-3" />
+        <label class="col-sm-3">DESCRIPTION: </label><input type="text" name="description" value="@x.description" class="col-sm-3" />
+        <label class="col-sm-3">CATEGORY: </label><input type="text" name="categorie" value="@x.categorie" class="col-sm-3" />
+        <label class="col-sm-3">PRIX: </label><input type="number" name="prix" value="@x.prix" class="col-sm-3" />
+        <label class="col-sm-3">URL: </label><input type="text" name="image" value="@x.image" class="col-sm-3" />
+        <button type="submit" class="btn-danger">SAUVEGARDER LES MODIFICATIONS</button>
+        <button type="submit" formaction="/Admin/Articles" class="btn-warning">FERMER</button>
+      </form>
+      <br />
+    }
+  </div>
+}
+
+
+
+

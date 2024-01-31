@@ -45,5 +45,12 @@ namespace projetfinal.DAL
 
       contexte.SaveChanges();
     }
+    public List<Commande> SelectByClient(string id)
+    {
+      ProjetFinalECommerceEntities5 contexte = new ProjetFinalECommerceEntities5();
+      int myId = Convert.ToInt32(id);
+      return contexte.Commandes.Where(c => c.idClient == myId).ToList();
+    }
+
   }
 }

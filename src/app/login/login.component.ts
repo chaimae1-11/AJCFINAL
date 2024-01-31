@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  utilisateur: Utilisateur;
 
   constructor(private http: HttpClient, private authService: AuthService,private router: Router) { }
 
@@ -35,7 +36,8 @@ export class LoginComponent {
     }).subscribe(response => {
       
       this.authService.loginSuccess(response); 
-     this.router.navigateByUrl('acceuil')
+     this.router.navigateByUrl('acceuil');
+    
     },
       err => {    
          this.showError = false;

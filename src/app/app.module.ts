@@ -18,6 +18,10 @@ import { HistoriqueCommandeComponent } from './historique-commande/historique-co
 import { LoginComponent } from './login/login.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChatboxComponent } from './chatbox/chatbox.component';
+import { MessageComponent } from './message/message.component';
+import { MessageinputComponent } from './messageinput/messageinput.component';
 
 
 
@@ -36,6 +40,9 @@ import { WishlistComponent } from './wishlist/wishlist.component';
       LoginComponent,
       InscriptionComponent,
       WishlistComponent,
+      ChatboxComponent,
+      MessageComponent,
+      MessageinputComponent,
  
   
     
@@ -45,7 +52,8 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule
   
   ],
   providers: [],
